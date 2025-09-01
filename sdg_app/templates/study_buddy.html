@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>AI Study Buddy</h2>
+  <form method="POST" class="stack">
+    <label for="notes">Paste study notes:</label>
+    <textarea id="notes" name="notes" rows="8" placeholder="Paste your study notes here...">{{ notes or "" }}</textarea>
+    <button type="submit">Generate Flashcards</button>
+  </form>
+</section>
+
+{% if generated %}
+<section class="grid">
+  <div class="card">
+    <h3>Did You Know?</h3>
+    <ul>
+      {% for f in facts %}
+      <li>• {{ f }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Quiz Flashcards</h3>
+    <div class="cards">
+      {% for q in quizzes %}
+      <div class="flip-card" data-timeout="120">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <p>{{ q.question }}</p>
+            <small>Click to reveal</small>
+          </div>
+          <div class="flip-card-back">
+            <p>{{ q.answer }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="hint">If you take too long to answer, you'll get a nudge: "Don't slumber! Hey!"</p>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

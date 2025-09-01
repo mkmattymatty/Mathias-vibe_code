@@ -1,0 +1,45 @@
+-- Create database (run once in MySQL):  CREATE DATABASE sdg_app CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- Then run these tables within that DB.
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS flashcards (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  source_text MEDIUMTEXT,
+  question TEXT,
+  answer TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS did_you_know (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  fact TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS quizzes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  question TEXT,
+  correct_answer TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS emotion_entries (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  entry_text MEDIUMTEXT,
+  score_positive FLOAT,
+  score_negative FLOAT,
+  label VARCHAR(32),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS recipes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_input TEXT,
+  suggestion MEDIUMTEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

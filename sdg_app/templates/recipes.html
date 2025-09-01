@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Recipe Recommender</h2>
+  <form method="POST" class="stack">
+    <label for="ingredients">Ingredients you have / dietary goal:</label>
+    <input id="ingredients" name="ingredients" placeholder="e.g., maize flour, sukuma wiki, eggs; goal: high-protein" />
+    <button type="submit">Get Suggestions</button>
+  </form>
+</section>
+
+{% if suggestion %}
+<section class="grid">
+  <div class="card">
+    <h3>Suggestions</h3>
+    <pre class="pre">{{ suggestion }}</pre>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

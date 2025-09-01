@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SDG Trio App — Education, Health & Food</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="container">
+    <h1>SDG Trio App</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('study_buddy') }}">AI Study Buddy</a>
+      <a href="{{ url_for('emotion_tracker') }}">Emotion Tracker</a>
+      <a href="{{ url_for('recipes') }}">Recipe Recommender</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash">
+          {% for cat, msg in messages %}
+            <li class="{{ cat }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="container">
+    <p>Built for SDGs: Quality Education, Good Health & Well-being, Zero Hunger.</p>
+  </footer>
+  <script src="{{ url_for('static', filename='js/flashcards.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/emotion_chart.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/recipes.js') }}"></script>
+</body>
+</html>
