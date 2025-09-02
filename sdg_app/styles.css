@@ -1,0 +1,28 @@
+:root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --accent:#22d3ee; --card:#111827; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; background: var(--bg); color: var(--fg); }
+a { color: var(--accent); text-decoration: none; }
+header, footer { padding: 1rem 0; }
+header h1 { margin: 0 0 .25rem 0; font-size: 1.5rem; }
+nav a { margin-right: 1rem; }
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+.card { background: var(--card); padding: 1rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,.35); margin-bottom: 1rem; }
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.stack { display: grid; gap: .5rem; }
+textarea, input { width: 100%; padding: .75rem; border-radius: .75rem; border: 1px solid #1f2937; background: #0b1220; color: var(--fg); }
+button { padding: .7rem 1rem; border-radius: .75rem; border: none; background: var(--accent); color: #02141a; font-weight: 700; cursor: pointer; }
+.flash { list-style: none; padding: 0; }
+.flash li { padding: .5rem .75rem; border-radius: .5rem; margin-bottom: .5rem; }
+.flash .error { background: #7f1d1d; }
+.flash .success { background: #064e3b; }
+.hint { color: var(--muted); margin-top: .5rem; }
+.pre { white-space: pre-wrap; background: #0b1220; padding: .75rem; border-radius: .5rem; }
+
+/* Flashcards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.flip-card { background: transparent; width: 100%; height: 160px; perspective: 1000px; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+.flip-card:focus, .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; display: grid; place-items: center; border-radius: .75rem; padding: .5rem; }
+.flip-card-front { background: linear-gradient(135deg, #0b1220, #12223d); border: 1px solid #1f2937; }
+.flip-card-back { background: linear-gradient(135deg, #1a2b4a, #0b1220); border: 1px solid #1f2937; transform: rotateY(180deg); }

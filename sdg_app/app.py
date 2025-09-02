@@ -190,3 +190,18 @@ def api_emotions():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# app.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    # In a real app, you'd fetch data from a database here
+    dynamic_data = "Welcome to my **dynamic** website!"
+    return render_template('index.html', message=dynamic_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)

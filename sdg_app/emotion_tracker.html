@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>AI-Powered Emotion Tracker</h2>
+  <form method="POST" class="stack">
+    <label for="entry">Journal entry (feelings about money, education system in Kenya, governance, etc.):</label>
+    <textarea id="entry" name="entry" rows="6" placeholder="Write about your day..."></textarea>
+    <button type="submit">Analyze & Save</button>
+  </form>
+</section>
+
+<section class="card">
+  <h3>Mood Trend</h3>
+  <canvas id="moodChart"></canvas>
+  <p id="supportPrompt" class="hint"></p>
+</section>
+
+<script>
+  // Fetch chart data and draw (also triggers the prompt question)
+  window.addEventListener('DOMContentLoaded', () => {
+    loadMoodChart();
+  });
+</script>
+{% endblock %}
